@@ -1,0 +1,52 @@
+ dpkg-buildpackage -D -us -uc -ui -b -Jauto -Pnobiarch,nocheck,nodoc
+dpkg-buildpackage: info: source package autotools-dev
+dpkg-buildpackage: info: source version 20180224.1
+dpkg-buildpackage: info: source distribution unstable
+dpkg-buildpackage: info: source changed by Henrique de Moraes Holschuh <hmh@debian.org>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+ fakeroot debian/rules clean
+dh_testdir
+dh_testroot
+rm -f debian/dh_autotools-dev_updateconfig.1 debian/dh_autotools-dev_restoreconfig.1
+rm -f build-stamp
+dh_clean
+FAKEROOTKEY=1860340669 LD_LIBRARY_PATH=:/opt/intel/lib/intel64_lin:/opt/intel/tbb/lib/intel64/gcc4.7 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules clean
+ debian/rules build
+dh_testdir
+pod2man -c Debhelper debian/dh_autotools-dev_updateconfig  debian/dh_autotools-dev_updateconfig.1
+pod2man -c Debhelper debian/dh_autotools-dev_restoreconfig debian/dh_autotools-dev_restoreconfig.1
+touch build-stamp
+ fakeroot debian/rules binary
+dh_testdir
+dh_testroot
+dh_prep
+dh_installdirs
+install config.guess config.sub /home/richard/debs/autotools-dev/autotools-dev/debian/autotools-dev/usr/share/misc
+install debian/dh_autotools-dev_updateconfig debian/dh_autotools-dev_restoreconfig /home/richard/debs/autotools-dev/autotools-dev/debian/autotools-dev/usr/bin
+install debian/autotools_dev.pm /home/richard/debs/autotools-dev/autotools-dev/debian/autotools-dev/usr/share/perl5/Debian/Debhelper/Sequence
+dh_testdir
+dh_testroot
+dh_installdocs
+dh_installexamples
+dh_installman
+dh_installchangelogs ChangeLog
+dh_strip
+dh_compress
+dh_fixperms
+dh_installdeb
+dh_shlibdeps
+dh_gencontrol
+dh_md5sums
+dh_builddeb
+dpkg-deb: building package 'autotools-dev' in '../autotools-dev_20180224.1_all.deb'.
+FAKEROOTKEY=397143134 LD_LIBRARY_PATH=:/opt/intel/lib/intel64_lin:/opt/intel/tbb/lib/intel64/gcc4.7 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules binary
+ dpkg-genbuildinfo --build=binary
+ dpkg-genchanges --build=binary >../autotools-dev_20180224.1_amd64.changes
+dpkg-genchanges: info: binary-only upload (no source code included)
+ dpkg-source --after-build .
+dpkg-buildpackage: info: binary-only upload (no source included)
+Now running lintian autotools-dev_20180224.1_amd64.changes ...
+W: autotools-dev: binary-without-manpage usr/bin/dh_autotools-dev_restoreconfig
+W: autotools-dev: binary-without-manpage usr/bin/dh_autotools-dev_updateconfig
+Finished running lintian.

@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Sat, 24 Feb 2018 13:00:57 -0300
+Source: autotools-dev
+Binary: autotools-dev
+Built-For-Profiles: nobiarch nocheck nodoc
+Architecture: all
+Version: 20180224.1
+Distribution: unstable
+Urgency: medium
+Maintainer: Henrique de Moraes Holschuh <hmh@debian.org>
+Changed-By: Henrique de Moraes Holschuh <hmh@debian.org>
+Description:
+ autotools-dev - Update infrastructure for config.{guess,sub} files
+Closes: 891281
+Changes:
+ autotools-dev (20180224.1) unstable; urgency=medium
+ .
+   * Sync to upstream git 2018-02-24
+     [commit bd9626458c30d7faec17d7dfbd85a80617b10007]
+     + Add detection of x32 ABI for x86_64-*-linux-gnu (closes: #891281)
+   * debian/control: update vcs-* for salsa.debian.org
+   * debian/control: bump standards-version to 4.1.3 (no changes needed)
+Checksums-Sha1:
+ bf0714892e9500f7853079e51759635e3a0f0739 71612 autotools-dev_20180224.1_all.deb
+ d93a9ddb75cac576ead7c34a0efd4fe5b3390e0a 5023 autotools-dev_20180224.1_amd64.buildinfo
+Checksums-Sha256:
+ 12c134fba5994035176054cc4dd04fbb63732567524e0abb935cf0a5178b7bd3 71612 autotools-dev_20180224.1_all.deb
+ 64d8b013b177a1c9b5dfb675b8e34b890e5a58707e8c4c098ca7ef809bcf97a1 5023 autotools-dev_20180224.1_amd64.buildinfo
+Files:
+ 48028c381b1a920e1013dd5bf0e8fad8 71612 devel optional autotools-dev_20180224.1_all.deb
+ e5a4a92ff9908d76b02e668d42539a5d 5023 devel optional autotools-dev_20180224.1_amd64.buildinfo
